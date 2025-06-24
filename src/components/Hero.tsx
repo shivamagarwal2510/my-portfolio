@@ -30,21 +30,35 @@ const Hero: React.FC = () => {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 15, delay: 0.5 } }
   };
+
+  const profileImageVariants = {
+    hidden: { opacity: 0, scale: 0.5, y: 50 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0, 
+      transition: { 
+        type: "spring", 
+        stiffness: 120, 
+        damping: 15, 
+        delay: 0.3 
+      } 
+    }
+  };
   
   const floatingElementTransition = (i: number) => ({
-    x: [0, 50 + i*5, 0], // Reduced movement range
+    x: [0, 50 + i*5, 0],
     y: [0, -50 - i*5, 0],
-    scale: [1, 1.05 + i*0.02, 1], // Reduced scale variation
+    scale: [1, 1.05 + i*0.02, 1],
     transition: {
-      duration: 15 + i * 2, // Slightly increased base duration for smoother effect
+      duration: 15 + i * 2,
       repeat: Infinity,
       ease: "linear"
     }
   });
 
-
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden py-16 sm:py-20">
+    <section id="home" className="h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
         <div className="absolute inset-0 bg-black/20">
           <div className="absolute inset-0" style={{
@@ -55,13 +69,13 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(4)].map((_, i) => ( // Reduced to 4 floating elements
+        {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-gradient-to-r from-cyan-400/5 to-blue-600/5 blur-xl" // Slightly smaller
+            className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-r from-cyan-400/5 to-blue-600/5 blur-xl"
             animate={floatingElementTransition(i).x ? floatingElementTransition(i) : undefined}
             style={{
-              left: `${10 + i * 22}%`, // Adjusted positioning for fewer elements
+              left: `${10 + i * 22}%`,
               top: `${10 + i * 20}%`,
             }}
           />
@@ -69,38 +83,63 @@ const Hero: React.FC = () => {
       </div>
 
       <motion.div 
-        className="container mx-auto px-4 sm:px-6 py-10 sm:py-20 relative z-10"
+        className="container mx-auto px-4 sm:px-6 relative z-10 max-w-4xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="text-center">
+        <div className="text-center space-y-4 sm:space-y-6">
           <motion.div
             variants={itemVariants}
-            className="mb-6 sm:mb-8"
+            className="space-y-3 sm:space-y-4"
           >
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-white/20"
+              className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-white/20"
             >
-              <Sparkles className="text-yellow-400" size={18} sm:size={20} />
-              <span className="text-white font-medium text-sm sm:text-base">Available for new opportunities</span>
+              <Sparkles className="text-yellow-400" size={16} sm:size={18} />
+              <span className="text-white font-medium text-xs sm:text-sm">Available for new opportunities</span>
             </motion.div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-white mb-3 sm:mb-4 relative">
+            {/* Profile Image */}
+            <motion.div
+              variants={profileImageVariants}
+              className="relative mx-auto w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full animate-pulse opacity-75"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-lg opacity-50"></div>
+              <motion.img
+                src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Shivam2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZCARDR5VJQH3RVO6%2F20250624%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20250624T142201Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDYaCmV1LW5vcnRoLTEiSDBGAiEA6X9SU3o8cL4ZgfGtUhxaaEWx6LJib69dKSN9peN%2B4QQCIQCx4oVHBLbkOCc1Z7cViLf%2BX%2BQs8oHGhALE4hh3upQbfCqZAggvEAAaDDYyMjgwNjE0MjgyNiIMMcLa1XueUZKG1wucKvYBmJzM2Kt8Ug%2BWXvvFymyLywKW%2Fg7yCi4YhdyPo6Viq91EghDisgmtWbLRYUOOWKgIH2euBjkEIXCRiSNc5AAly3KPrDOHnVAw6veJWrUAIpR42NP9Qctpz%2FEskyGxcCU1udiNT9WX5vbEHdQNlczgbIr3Fc3RAX06L%2BzXrabvBNqtVvZul2MXBsFy1bfoE9dReZpNVvX9viWpyUHoUrGn4rkNQ9%2BfIbTrY4pHsdz4CegvFoZzQs4rIX5pzU%2BFZZR6ovKpHLFQItIbnBXNnUpFLL7aDm4DpT%2Fqv9y81haF%2B3rRRMct5vZaCwZrQ9adwuu%2Bg8Gsc88fMKDi6sIGOt4BmHwqZkyAxkXnF7n4yJzb2jZ4u01G2bXbfL0GRGxDvJNZVktLPFHq%2FAfAMCwPXHT7bKu8plMnU5HApY6IbWz4K65yQzAUcc2w1mn2FIigENzcVBGf9hkkRdYo8lATpZFu1FdRqCNwwvh%2FWZSU2FzP0NcU57Oyxg%2Fe87byx8h2ABdvGtHRO09zAYDrk4f0%2Fq9j%2BrqsFkvdNwHYug0LPhYr2S3HWoWJ9AMv3c3%2FMkw4KrBZ6TAoDvCXNJI%2Fa6LcF3SYBt6yme9%2BMni6ygAeWhHFQSuVILD8ZQq32qJjUEWn&X-Amz-Signature=90b35e2e1bba51ae12fc002e8294acf2e1a1d56d343bdd42d6262c05609f35db&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+                alt="Shivam Agarwal - AI Frontend Engineer"
+                className="relative w-full h-full object-cover rounded-full border-2 border-white/20 shadow-2xl"
+                whileHover={{ 
+                  scale: 1.05, 
+                  transition: { type: "spring", stiffness: 300 } 
+                }}
+                loading="eager"
+              />
+              <motion.div
+                className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-green-400 rounded-full border-2 border-white shadow-lg"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </motion.div>
+
+          <div className="space-y-2 sm:space-y-3">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white relative">
               <motion.span variants={titleSpan1Variants}>
-                Shivam
+                Shivam{' '}
               </motion.span>
-              <br className="md:hidden" />
               <motion.span variants={titleSpan2Variants}
                 className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
               >
                 Agarwal
               </motion.span>
               <motion.div
-                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 text-3xl sm:text-4xl"
+                className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 text-xl sm:text-2xl"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
@@ -110,19 +149,19 @@ const Hero: React.FC = () => {
 
             <motion.div
               variants={slowItemVariants}
-              className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-6"
+              className="flex items-center justify-center space-x-2"
             >
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-medium">
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
+              <p className="text-sm sm:text-base md:text-lg text-white/90 font-medium">
                 AI Frontend Engineer & Founding Engineer
               </p>
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-400 rounded-full animate-pulse"></div>
             </motion.div>
-          </motion.div>
+          </div>
 
           <motion.p
             variants={slowItemVariants}
-            className="text-sm sm:text-base md:text-lg text-white/80 max-w-lg md:max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8"
+            className="text-xs sm:text-sm md:text-base text-white/80 max-w-xs sm:max-w-lg md:max-w-xl mx-auto leading-relaxed"
           >
             Building the future of AI-powered frontend development at{' '}
             <span className="text-cyan-400 font-semibold">Dualite</span>. 
@@ -132,7 +171,7 @@ const Hero: React.FC = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
+            className="flex flex-wrap justify-center gap-2 sm:gap-3"
           >
             {[
               { icon: Mail, text: 'shivgun03@gmail.com', href: 'mailto:shivgun03@gmail.com' },
@@ -143,17 +182,18 @@ const Hero: React.FC = () => {
                 key={index}
                 href={item.href}
                 whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
-                className="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white/90 text-xs sm:text-sm"
+                className="flex items-center space-x-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-white/90 text-xs"
               >
-                <item.icon size={16} sm:size={18} />
-                <span>{item.text}</span>
+                <item.icon size={12} sm:size={14} />
+                <span className="hidden sm:inline">{item.text}</span>
+                <span className="sm:hidden">{item.text.split('@')[0] || item.text.split(' ')[0]}</span>
               </motion.a>
             ))}
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12"
+            className="flex justify-center space-x-3 sm:space-x-4"
           >
             {[
               { icon: Github, href: "#", label: "GitHub" },
@@ -164,11 +204,11 @@ const Hero: React.FC = () => {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                whileHover={{ scale: 1.1, y: -5, transition: { type: "spring", stiffness: 300 } }}
+                whileHover={{ scale: 1.1, y: -3, transition: { type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.95 }}
-                className="group p-3 sm:p-4 bg-white/10 backdrop-blur-md text-white rounded-xl sm:rounded-2xl hover:bg-white/20 transition-all duration-300 border border-white/20 hover:shadow-lg hover:shadow-cyan-500/20"
+                className="group p-2.5 sm:p-3 bg-white/10 backdrop-blur-md text-white rounded-lg sm:rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20 hover:shadow-lg hover:shadow-cyan-500/20"
               >
-                <social.icon size={20} sm:size={24} />
+                <social.icon size={16} sm:size={18} />
               </motion.a>
             ))}
           </motion.div>
@@ -177,17 +217,17 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ type: "spring", stiffness: 100, delay: 1.2 }}
-            className="relative"
+            className="pt-2 sm:pt-4"
           >
             <motion.a
               href="#about"
               aria-label="Scroll to about section"
               className="inline-block group"
-              animate={{ y: [0, 6, 0] }} // Reduced bounce slightly
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }} // Slightly slower bounce
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all duration-300">
-                <ArrowDown className="text-white group-hover:text-cyan-400 transition-colors" size={20} sm:size={24} />
+              <div className="p-2 sm:p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                <ArrowDown className="text-white group-hover:text-cyan-400 transition-colors" size={16} sm:size={18} />
               </div>
             </motion.a>
           </motion.div>

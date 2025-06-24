@@ -46,6 +46,15 @@ const About: React.FC = () => {
     })
   };
 
+  const profileImageVariant = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -10 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      rotate: 0,
+      transition: { type: "spring", stiffness: 120, damping: 15, delay: 0.2 } 
+    }
+  };
 
   const skillCategories = [
     {
@@ -113,7 +122,7 @@ const About: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+        <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           <motion.div
             variants={cardVariantLeft}
             initial="hidden"
@@ -140,6 +149,35 @@ const About: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={profileImageVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative group flex items-center justify-center"
+          >
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl animate-pulse"></div>
+              <motion.img
+                src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Shivam2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZCARDR5VJQH3RVO6%2F20250624%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20250624T142201Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDYaCmV1LW5vcnRoLTEiSDBGAiEA6X9SU3o8cL4ZgfGtUhxaaEWx6LJib69dKSN9peN%2B4QQCIQCx4oVHBLbkOCc1Z7cViLf%2BX%2BQs8oHGhALE4hh3upQbfCqZAggvEAAaDDYyMjgwNjE0MjgyNiIMMcLa1XueUZKG1wucKvYBmJzM2Kt8Ug%2BWXvvFymyLywKW%2Fg7yCi4YhdyPo6Viq91EghDisgmtWbLRYUOOWKgIH2euBjkEIXCRiSNc5AAly3KPrDOHnVAw6veJWrUAIpR42NP9Qctpz%2FEskyGxcCU1udiNT9WX5vbEHdQNlczgbIr3Fc3RAX06L%2BzXrabvBNqtVvZul2MXBsFy1bfoE9dReZpNVvX9viWpyUHoUrGn4rkNQ9%2BfIbTrY4pHsdz4CegvFoZzQs4rIX5pzU%2BFZZR6ovKpHLFQItIbnBXNnUpFLL7aDm4DpT%2Fqv9y81haF%2B3rRRMct5vZaCwZrQ9adwuu%2Bg8Gsc88fMKDi6sIGOt4BmHwqZkyAxkXnF7n4yJzb2jZ4u01G2bXbfL0GRGxDvJNZVktLPFHq%2FAfAMCwPXHT7bKu8plMnU5HApY6IbWz4K65yQzAUcc2w1mn2FIigENzcVBGf9hkkRdYo8lATpZFu1FdRqCNwwvh%2FWZSU2FzP0NcU57Oyxg%2Fe87byx8h2ABdvGtHRO09zAYDrk4f0%2Fq9j%2BrqsFkvdNwHYug0LPhYr2S3HWoWJ9AMv3c3%2FMkw4KrBZ6TAoDvCXNJI%2Fa6LcF3SYBt6yme9%2BMni6ygAeWhHFQSuVILD8ZQq32qJjUEWn&X-Amz-Signature=90b35e2e1bba51ae12fc002e8294acf2e1a1d56d343bdd42d6262c05609f35db&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+                alt="Shivam Agarwal - Professional Photo"
+                className="relative w-full h-full object-cover rounded-2xl border-2 border-gray-600/50 shadow-2xl group-hover:border-purple-500/50 transition-all duration-500"
+                whileHover={{ 
+                  scale: 1.03,
+                  rotate: 1,
+                  transition: { type: "spring", stiffness: 300 } 
+                }}
+                loading="lazy"
+              />
+              <motion.div
+                className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-gray-800 shadow-lg"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
             </div>
           </motion.div>
 
