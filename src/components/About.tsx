@@ -1,8 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Brain, Sparkles, Zap } from 'lucide-react'; // Palette removed as not used
+import { Code, Database, Brain, Sparkles, Zap } from 'lucide-react';
 
 const About: React.FC = () => {
+
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const cardVariantLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+  
+  const cardVariantRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const skillItemVariant = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { type: "spring", stiffness: 150, damping: 15, delay: i * 0.05 }
+    })
+  };
+
+  const skillCategoryVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 18, delay: i * 0.1 }
+    })
+  };
+  
+  const skillTextVariant = {
+    hidden: { opacity: 0, x: -15 },
+    visible: (i: number) => ({
+        opacity: 1,
+        x: 0,
+        transition: { type: "tween", ease: "easeOut", duration: 0.3, delay: i * 0.05 }
+    })
+  };
+
+
   const skillCategories = [
     {
       icon: <Code className="text-blue-500" size={28} sm:size={32} />,
@@ -35,22 +79,22 @@ const About: React.FC = () => {
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.08) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255,0.08) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.08) 75%), linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.08) 75%)',
-          backgroundSize: '20px 20px', // Consistent small pattern
+          backgroundSize: '20px 20px',
           backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
         }}></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-blue-500/30"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
             <Sparkles className="text-blue-400" size={18} sm:size={20} />
             <span className="text-white font-medium text-sm sm:text-base">About Me</span>
@@ -71,10 +115,10 @@ const About: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={cardVariantLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             className="relative group"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 rounded-xl sm:rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
@@ -100,10 +144,10 @@ const About: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={cardVariantRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             className="relative group"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-xl sm:rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
@@ -116,10 +160,11 @@ const About: React.FC = () => {
                 {['Operating System', 'OOPs', 'DBMS', 'Networking'].map((skill, index) => (
                   <motion.span
                     key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    custom={index}
+                    variants={skillItemVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
                     className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-center hover:scale-105 transition-transform duration-200"
                   >
                     {skill}
@@ -131,10 +176,10 @@ const About: React.FC = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">
             Skills &{' '}
@@ -146,19 +191,19 @@ const About: React.FC = () => {
             {skillCategories.map((category, index) => (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }} // Subtle hover
+                custom={index}
+                variants={skillCategoryVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                whileHover={{ y: -5, scale: 1.02, transition: { type: "spring", stiffness: 300 } }}
                 className="group relative"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover:opacity-15 rounded-xl sm:rounded-2xl blur-lg transition-all duration-500`}></div>
                 <div className="relative bg-gray-800/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full">
                   <div className="flex items-center mb-3 sm:mb-4">
                     <motion.div
-                      whileHover={{ rotate: 15 }} // Subtle rotate
-                      transition={{ duration: 0.3 }}
+                      whileHover={{ rotate: 15, transition: { type: "spring", stiffness: 400 } }}
                       className="p-2 sm:p-3 bg-gray-700/50 rounded-lg sm:rounded-xl mr-2 sm:mr-3"
                     >
                       {category.icon}
@@ -171,9 +216,10 @@ const About: React.FC = () => {
                     {category.skills.map((skill, skillIndex) => (
                       <motion.p
                         key={skillIndex}
-                        initial={{ opacity: 0, x: -15 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: skillIndex * 0.05, duration: 0.3 }}
+                        custom={skillIndex}
+                        variants={skillTextVariant}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
                         className="text-gray-400 text-xs sm:text-sm leading-relaxed hover:text-gray-300 transition-colors duration-200"
                       >

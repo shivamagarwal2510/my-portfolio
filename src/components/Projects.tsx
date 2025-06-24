@@ -6,7 +6,7 @@ const Projects: React.FC = () => {
   const projects = [
     {
       title: 'AutoDoc',
-      icon: <Bot className="text-blue-400" size={32} />, // Adjusted icon size for consistency
+      icon: <Bot className="text-blue-400" size={32} />,
       gradient: 'from-blue-500 to-cyan-500',
       description: 'Revolutionary AI-powered documentation system using RAG with vector embeddings in Pinecone. Leverages OpenAI and Anthropic\'s Claude for intelligent, context-aware documentation generation.',
       technologies: ['FastAPI', 'Streamlit', 'OpenAI', 'Claude', 'Pinecone', 'GitHub API'],
@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
     },
     {
       title: 'TapMe',
-      icon: <MessageCircle className="text-green-400" size={32} />, // Adjusted icon size
+      icon: <MessageCircle className="text-green-400" size={32} />,
       gradient: 'from-green-500 to-emerald-500',
       description: 'Next-generation real-time chat application with modern UI/UX. Built with ReactJS and Firebase, featuring seamless user experience and engaging real-time communications.',
       technologies: ['ReactJS', 'Firebase', 'Firestore', 'Auth', 'Tailwind CSS'],
@@ -37,10 +37,41 @@ const Projects: React.FC = () => {
       stats: { users: '500+', messages: '10k+', uptime: '99.9%' }
     }
   ];
+  
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const projectCardVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20, delay: i * 0.15 }
+    })
+  };
+
+  const featureItemVariant = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: { type: "tween", ease: "easeOut", duration: 0.3, delay: i * 0.05 }
+    })
+  };
+
+  const techTagVariant = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { type: "spring", stiffness: 150, damping: 15, delay: i * 0.05 }
+    })
+  };
 
   return (
     <section id="projects" className="py-16 sm:py-20 bg-gray-900 relative overflow-hidden">
-      {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -48,15 +79,15 @@ const Projects: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-purple-500/30"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
             <Sparkles className="text-purple-400" size={18} sm:size={20} />
             <span className="text-white font-medium text-sm sm:text-base">Featured Work</span>
@@ -78,10 +109,11 @@ const Projects: React.FC = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              custom={index}
+              variants={projectCardVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
               className="group relative"
             >
               <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-20 rounded-2xl sm:rounded-3xl blur-xl transition-all duration-500`}></div>
@@ -90,8 +122,7 @@ const Projects: React.FC = () => {
                 <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <motion.div
-                      whileHover={{ rotate: 15, scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
+                      whileHover={{ rotate: 15, scale: 1.1, transition: { type: "spring", stiffness: 300 } }}
                       className={`p-3 sm:p-4 bg-gradient-to-r ${project.gradient} rounded-xl sm:rounded-2xl shadow-lg`}
                     >
                       {project.icon}
@@ -131,10 +162,11 @@ const Projects: React.FC = () => {
                     {project.features.map((feature, featureIndex) => (
                       <motion.div
                         key={featureIndex}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: featureIndex * 0.05, duration: 0.3 }}
-                        viewport={{ once: true }}
+                        custom={featureIndex}
+                        variants={featureItemVariant}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
                         className="flex items-start group/feature"
                       >
                         <div className={`w-1.5 h-1.5 bg-gradient-to-r ${project.gradient} rounded-full mt-[7px] mr-2 sm:mr-3 flex-shrink-0 group-hover/feature:scale-125 transition-transform duration-200`}></div>
@@ -155,11 +187,12 @@ const Projects: React.FC = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <motion.span
                         key={techIndex}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: techIndex * 0.05, duration: 0.3 }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.05 }}
+                        custom={techIndex}
+                        variants={techTagVariant}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
                         className={`bg-gradient-to-r ${project.gradient} bg-opacity-10 border border-current text-current px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium hover:bg-opacity-20 transition-all duration-200`}
                         style={{ color: project.gradient.startsWith('from-blue') ? 'var(--tw-color-blue-300)' : 'var(--tw-color-green-300)' }}
                       >
@@ -172,7 +205,7 @@ const Projects: React.FC = () => {
                 <div className="mt-auto flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
                   <motion.a
                     href={project.githubUrl}
-                    whileHover={{ scale: 1.03, y: -1 }}
+                    whileHover={{ scale: 1.03, y: -1, transition: { type: "spring", stiffness: 300 } }}
                     whileTap={{ scale: 0.97 }}
                     className="flex-1 flex items-center justify-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all duration-200 shadow-md hover:shadow-lg"
                   >
@@ -181,7 +214,7 @@ const Projects: React.FC = () => {
                   </motion.a>
                   <motion.a
                     href={project.liveUrl}
-                    whileHover={{ scale: 1.03, y: -1 }}
+                    whileHover={{ scale: 1.03, y: -1, transition: { type: "spring", stiffness: 300 } }}
                     whileTap={{ scale: 0.97 }}
                     className={`flex-1 flex items-center justify-center space-x-2 bg-gradient-to-r ${project.gradient} text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all duration-200 shadow-md hover:shadow-lg`}
                   >
@@ -195,10 +228,10 @@ const Projects: React.FC = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="mt-12 sm:mt-16 text-center"
         >
           <div className="relative group">
@@ -213,7 +246,7 @@ const Projects: React.FC = () => {
               </p>
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
               >

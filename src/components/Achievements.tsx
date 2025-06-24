@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Sparkles, Crown, Zap, Rocket, Star } from 'lucide-react'; // Added Star
+import { Trophy, Sparkles, Crown, Zap, Rocket, Star } from 'lucide-react';
 
 const Achievements: React.FC = () => {
   const achievements = [
     {
       icon: <Crown className="text-yellow-400" size={32} sm:size={40} />,
-      title: '₹1.25 Crore Funding', // Corrected Rupee symbol
+      title: '₹1.25 Crore Funding',
       description: 'Key contributor to securing investor funding at Dualite through innovative development.',
       category: 'Business Impact',
       gradient: 'from-yellow-400 to-orange-500',
@@ -42,6 +42,20 @@ const Achievements: React.FC = () => {
     }
   ];
 
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const achievementCardVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 18, delay: i * 0.1 }
+    })
+  };
+
   return (
     <section id="achievements" className="py-16 sm:py-20 bg-gray-900 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -52,15 +66,15 @@ const Achievements: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-yellow-500/30"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
             <Trophy className="text-yellow-400" size={18} sm:size={20} />
             <span className="text-white font-medium text-sm sm:text-base">Hall of Fame</span>
@@ -82,11 +96,12 @@ const Achievements: React.FC = () => {
           {achievements.map((achievement, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }} // Subtle hover
+              custom={index}
+              variants={achievementCardVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ y: -5, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 15 } }}
               className="group relative"
             >
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-5xl sm:text-6xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">
@@ -97,8 +112,7 @@ const Achievements: React.FC = () => {
               <div className="relative bg-gray-800/60 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 h-full flex flex-col">
                 <div className="flex justify-between items-start mb-3 sm:mb-4">
                   <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }} // Subtle icon hover
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ rotate: 15, scale: 1.1, transition: { type: "spring", stiffness: 300 } }}
                     className={`p-3 sm:p-4 bg-gradient-to-r ${achievement.gradient} rounded-xl sm:rounded-2xl shadow-lg`}
                   >
                     {achievement.icon}
@@ -140,10 +154,10 @@ const Achievements: React.FC = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="relative group"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-blue-600/20 rounded-2xl sm:rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
@@ -171,7 +185,7 @@ const Achievements: React.FC = () => {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05, y: -2, transition: { type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
               >
@@ -181,11 +195,11 @@ const Achievements: React.FC = () => {
               
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05, y: -2, transition: { type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold transition-all duration-200"
               >
-                <Trophy size={18} sm:size={20} /> {/* Changed icon to Trophy */}
+                <Trophy size={18} sm:size={20} />
                 <span>View My Work</span>
               </motion.a>
             </div>

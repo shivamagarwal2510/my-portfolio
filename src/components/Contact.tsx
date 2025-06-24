@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Code as LeetcodeIcon, Sparkles, MessageSquare } from 'lucide-react'; // Renamed Code to LeetcodeIcon
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Code as LeetcodeIcon, Sparkles, MessageSquare } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,8 +20,7 @@ const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Add toast notification for success/failure
-    setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   const contactInfo = [
@@ -43,7 +42,7 @@ const Contact: React.FC = () => {
       icon: <MapPin className="text-purple-400" size={24} sm:size={28} />,
       title: 'Location',
       value: 'UP, India',
-      href: '#', // Consider linking to a map or removing href if not applicable
+      href: '#',
       gradient: 'from-purple-500 to-pink-500'
     }
   ];
@@ -52,26 +51,59 @@ const Contact: React.FC = () => {
     {
       name: 'LinkedIn',
       icon: <Linkedin size={20} sm:size={22} />,
-      href: '#', // Replace with actual LinkedIn URL
+      href: '#',
       color: 'from-blue-600 to-blue-700',
       description: 'Professional Network'
     },
     {
       name: 'GitHub',
       icon: <Github size={20} sm:size={22} />,
-      href: '#', // Replace with actual GitHub URL
+      href: '#',
       color: 'from-gray-700 to-gray-800',
       description: 'Code Repository'
     },
     {
       name: 'LeetCode',
-      icon: <LeetcodeIcon size={20} sm:size={22} />, // Used LeetcodeIcon
-      href: '#', // Replace with actual LeetCode URL
+      icon: <LeetcodeIcon size={20} sm:size={22} />,
+      href: '#',
       color: 'from-yellow-600 to-orange-600',
       description: 'Coding Challenges'
     }
-    // GeeksforGeeks removed for brevity, can be added back if needed
   ];
+
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const columnLeftVariant = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const columnRightVariant = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const listItemVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 15, delay: i * 0.1 }
+    })
+  };
+  
+  const formItemVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (delay: number = 0) => ({ // Allow passing custom delay
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 18, delay: delay }
+    })
+  };
+
 
   return (
     <section id="contact" className="py-16 sm:py-20 bg-black relative overflow-hidden">
@@ -83,15 +115,15 @@ const Contact: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-blue-500/30"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
             <MessageSquare className="text-blue-400" size={18} sm:size={20} />
             <span className="text-white font-medium text-sm sm:text-base">Let's Connect</span>
@@ -111,10 +143,10 @@ const Contact: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={columnLeftVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="space-y-6 sm:space-y-8"
           >
             <div>
@@ -128,18 +160,18 @@ const Contact: React.FC = () => {
                   <motion.a
                     key={index}
                     href={info.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.02, x: 5 }} // Subtle hover
+                    custom={index}
+                    variants={listItemVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    whileHover={{ scale: 1.02, x: 5, transition: { type: "spring", stiffness: 300 } }}
                     className="group relative block"
                   >
                     <div className={`absolute inset-0 bg-gradient-to-r ${info.gradient} opacity-0 group-hover:opacity-15 rounded-xl sm:rounded-2xl blur-lg transition-all duration-500`}></div>
                     <div className="relative flex items-center space-x-3 sm:space-x-4 p-4 sm:p-5 bg-gray-900/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300">
                       <motion.div
-                        whileHover={{ rotate: 10 }} // Subtle icon rotate
-                        transition={{ duration: 0.3 }}
+                        whileHover={{ rotate: 10, transition: { type: "spring", stiffness: 400 } }}
                         className={`p-3 sm:p-4 bg-gradient-to-r ${info.gradient} rounded-lg sm:rounded-xl shadow-md`}
                       >
                         {info.icon}
@@ -163,11 +195,12 @@ const Contact: React.FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, y: -3 }} // Subtle hover
+                    custom={index}
+                    variants={listItemVariant} // Reusing listItemVariant
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    whileHover={{ scale: 1.05, y: -3, transition: { type: "spring", stiffness: 300 } }}
                     className="group relative"
                   >
                     <div className={`absolute inset-0 bg-gradient-to-r ${link.color} opacity-0 group-hover:opacity-25 rounded-lg sm:rounded-xl blur-md transition-all duration-500`}></div>
@@ -185,10 +218,10 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={columnRightVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="relative"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl sm:rounded-3xl blur-xl"></div>
@@ -197,27 +230,27 @@ const Contact: React.FC = () => {
               
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
-                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} viewport={{ once: true }}>
+                  <motion.div variants={formItemVariant} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                     <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5">Full Name</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 text-sm sm:text-base" placeholder="Your full name"/>
                   </motion.div>
-                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} viewport={{ once: true }}>
+                  <motion.div variants={formItemVariant} custom={0.15} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                     <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5">Email Address</label>
                     <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 text-sm sm:text-base" placeholder="your.email@example.com"/>
                   </motion.div>
                 </div>
                 
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} viewport={{ once: true }}>
+                <motion.div variants={formItemVariant} custom={0.2} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                   <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5">Subject</label>
                   <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 text-sm sm:text-base" placeholder="What's this about?"/>
                 </motion.div>
                 
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} viewport={{ once: true }}>
+                <motion.div variants={formItemVariant} custom={0.25} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                   <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5">Message</label>
                   <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} required className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base" placeholder="Tell me about your project..."></textarea>
                 </motion.div>
                 
-                <motion.button type="submit" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} viewport={{ once: true }} whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-md hover:shadow-blue-500/25 transition-all duration-200 flex items-center justify-center space-x-2">
+                <motion.button type="submit" variants={formItemVariant} custom={0.3} initial="hidden" whileInView="visible" viewport={{ once: true }} whileHover={{ scale: 1.02, y: -1, transition: { type: "spring", stiffness: 300 } }} whileTap={{ scale: 0.98 }} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-md hover:shadow-blue-500/25 transition-all duration-200 flex items-center justify-center space-x-2">
                   <Send size={18} sm:size={20} />
                   <span>Send Message</span>
                 </motion.button>

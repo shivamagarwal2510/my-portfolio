@@ -16,7 +16,7 @@ const Experience: React.FC = () => {
         'Building Alpha, an AI Frontend Engineer using Remix and TypeScript with sophisticated architecture integrating Anthropic\'s AI models',
         'Engineered AI-driven code generation system with custom prompt engineering techniques for high-quality, modular code structures'
       ],
-      metrics: { funding: '₹1.25Cr', users: '15k+', precision: '90%' } // Corrected Rupee symbol
+      metrics: { funding: '₹1.25Cr', users: '15k+', precision: '90%' }
     },
     {
       title: 'SDE Intern',
@@ -28,10 +28,10 @@ const Experience: React.FC = () => {
       iconColor: 'text-green-400',
       achievements: [
         'Developed dashboard using Next.js and MongoDB with Figma OAuth, increasing user base from 4,000 to 15,000',
-        'Built Component mode improving graphical precision by 90%, securing ₹1.25 crore in investor funding', // Corrected Rupee symbol
+        'Built Component mode improving graphical precision by 90%, securing ₹1.25 crore in investor funding',
         'Redesigned modern UI for plugin, driving 30% boost in user engagement'
       ],
-      metrics: { growth: '275%', engagement: '+30%', funding: '₹1.25Cr' } // Corrected Rupee symbol
+      metrics: { growth: '275%', engagement: '+30%', funding: '₹1.25Cr' }
     },
     {
       title: 'Frontend Developer Intern',
@@ -50,6 +50,39 @@ const Experience: React.FC = () => {
     }
   ];
 
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const experienceItemVariant = {
+    hidden: { opacity: 0, x: -50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20, delay: i * 0.15 }
+    })
+  };
+
+  const metricItemVariant = {
+    hidden: { opacity: 0, y: 10 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 150, damping: 15, delay: i * 0.05 + 0.2 } // Staggered delay after parent
+    })
+  };
+
+  const achievementTextVariant = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: { type: "tween", ease: "easeOut", duration: 0.4, delay: i * 0.07 + 0.3 } // Staggered delay after parent
+    })
+  };
+
+
   return (
     <section id="experience" className="py-16 sm:py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0">
@@ -60,15 +93,15 @@ const Experience: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={sectionVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-blue-500/30"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
             <Sparkles className="text-blue-400" size={18} sm:size={20} />
             <span className="text-white font-medium text-sm sm:text-base">Professional Journey</span>
@@ -90,17 +123,18 @@ const Experience: React.FC = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              custom={index}
+              variants={experienceItemVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
               className="relative pl-8 sm:pl-10 mb-10 sm:mb-12 last:mb-0"
             >
               <motion.div
                 className="absolute left-0 top-1 sm:top-2.5 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 rounded-full shadow-lg shadow-purple-500/40"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10, delay: 0.2 + index * 0.15 }}
                 viewport={{ once: true }}
               />
               {index < experiences.length - 1 && (
@@ -139,12 +173,13 @@ const Experience: React.FC = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  {Object.entries(exp.metrics).map(([key, value]) => (
+                  {Object.entries(exp.metrics).map(([key, value], metricIndex) => (
                     <motion.div
                       key={key}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1, duration: 0.5 }}
+                      custom={metricIndex}
+                      variants={metricItemVariant}
+                      initial="hidden"
+                      whileInView="visible"
                       viewport={{ once: true }}
                       className="text-center p-1.5 px-2 sm:p-2 sm:px-2.5 bg-slate-800/70 rounded-md sm:rounded-lg border border-slate-700/50 min-w-[60px] sm:min-w-[70px] flex-grow sm:flex-grow-0"
                     >
@@ -158,9 +193,10 @@ const Experience: React.FC = () => {
                   {exp.achievements.map((achievement, achIndex) => (
                     <motion.div
                       key={achIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: achIndex * 0.1, duration: 0.5 }}
+                      custom={achIndex}
+                      variants={achievementTextVariant}
+                      initial="hidden"
+                      whileInView="visible"
                       viewport={{ once: true }}
                       className="flex items-start"
                     >

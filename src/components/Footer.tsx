@@ -4,10 +4,24 @@ import { Heart, Code, Sparkles, Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' }, // Replace with actual URL
-    { icon: Linkedin, href: '#', label: 'LinkedIn' }, // Replace with actual URL
+    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:shivgun03@gmail.com', label: 'Email' }
   ];
+
+  const footerContentVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+  };
+
+  const socialLinkVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 15, delay: i * 0.07 }
+    })
+  };
 
   return (
     <footer className="bg-black relative overflow-hidden">
@@ -18,16 +32,15 @@ const Footer: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={footerContentVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center"
         >
           <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
             <motion.div
-              whileHover={{ rotate: 15 }} // Subtle rotate
-              transition={{ duration: 0.3 }}
+              whileHover={{ rotate: 15, transition: { type: "spring", stiffness: 300 } }}
               className="relative"
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl sm:rounded-2xl flex items-center justify-center">
@@ -56,11 +69,12 @@ const Footer: React.FC = () => {
                 aria-label={social.label}
                 target={social.label === 'Email' ? '_self' : '_blank'}
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.1, y: -2 }}
+                custom={index}
+                variants={socialLinkVariant}
+                initial="hidden" // Ensure initial state is set for viewport-triggered animations
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                whileHover={{ scale: 1.1, y: -2, transition: { type: "spring", stiffness: 300 } }}
                 className="p-2.5 sm:p-3 bg-gray-900/50 backdrop-blur-md text-gray-400 hover:text-white rounded-lg sm:rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-200 group"
               >
                 <social.icon size={18} sm:size={20} />
@@ -73,12 +87,12 @@ const Footer: React.FC = () => {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
+            transition={{ type: "spring", stiffness: 100, delay: 0.2 }} // Added spring and slight delay
             viewport={{ once: true }}
             className="flex items-center justify-center space-x-1.5 sm:space-x-2 text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6"
           >
             <span>Made with</span>
-            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
+            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
               <Heart className="text-red-500" size={14} sm:size={16} />
             </motion.div>
             <span>using</span>
@@ -95,7 +109,6 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Subtle decorative elements */}
           <div className="absolute top-8 left-8 opacity-5">
             <motion.div animate={{ y: [0, -5, 0], rotate: [0, 90, 180] }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }} className="text-xl">⚡</motion.div>
           </div>
