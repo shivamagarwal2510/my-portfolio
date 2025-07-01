@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Bot, MessageCircle, Sparkles, Zap, Database, Globe } from 'lucide-react';
+import { Github, Bot, MessageCircle, Sparkles, Zap, Database } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projects = [
@@ -16,9 +16,7 @@ const Projects: React.FC = () => {
         'Intelligent documentation consistency',
         'Automated Pull Request creation'
       ],
-      githubUrl: '#',
-      liveUrl: '#',
-      stats: { commits: '120+', stars: '45', forks: '12' }
+      githubUrl: 'https://github.com/shivamagarwal2510/AutoDoc',
     },
     {
       title: 'TapMe',
@@ -32,9 +30,7 @@ const Projects: React.FC = () => {
         'Smart auto-scrolling',
         'Fully responsive design'
       ],
-      githubUrl: '#',
-      liveUrl: '#',
-      stats: { users: '500+', messages: '10k+', uptime: '99.9%' }
+      githubUrl: 'https://github.com/shivamagarwal2510/TapMe',
     }
   ];
   
@@ -131,13 +127,6 @@ const Projects: React.FC = () => {
                       <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
                         {project.title}
                       </h3>
-                      <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1">
-                        {Object.entries(project.stats).map(([key, value]) => (
-                          <span key={key} className="text-xs text-gray-400 bg-gray-700/60 px-2 py-0.5 rounded-full">
-                            {value} {key}
-                          </span>
-                        ))}
-                      </div>
                     </div>
                   </div>
                   <motion.div
@@ -202,24 +191,16 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-auto flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+                <div className="mt-auto">
                   <motion.a
                     href={project.githubUrl}
+										target="_blank"
                     whileHover={{ scale: 1.03, y: -1, transition: { type: "spring", stiffness: 300 } }}
                     whileTap={{ scale: 0.97 }}
-                    className="flex-1 flex items-center justify-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all duration-200 shadow-md hover:shadow-lg"
+                    className={`w-full flex items-center justify-center space-x-2 bg-gradient-to-r ${project.gradient} text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all duration-200 shadow-md hover:shadow-lg`}
                   >
                     <Github size={16} sm:size={18} />
-                    <span>View Code</span>
-                  </motion.a>
-                  <motion.a
-                    href={project.liveUrl}
-                    whileHover={{ scale: 1.03, y: -1, transition: { type: "spring", stiffness: 300 } }}
-                    whileTap={{ scale: 0.97 }}
-                    className={`flex-1 flex items-center justify-center space-x-2 bg-gradient-to-r ${project.gradient} text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all duration-200 shadow-md hover:shadow-lg`}
-                  >
-                    <Globe size={16} sm:size={18} />
-                    <span>Live Demo</span>
+                    <span>View Code on GitHub</span>
                   </motion.a>
                 </div>
               </div>

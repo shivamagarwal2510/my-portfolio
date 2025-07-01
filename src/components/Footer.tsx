@@ -4,8 +4,8 @@ import { Heart, Code, Sparkles, Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/shivamagarwal2510', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/shivam-agarwal-b88a04201/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:shivgun03@gmail.com', label: 'Email' }
   ];
 

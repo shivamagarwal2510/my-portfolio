@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full animate-pulse opacity-75"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-lg opacity-50"></div>
               <motion.img
-                src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Shivam2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZCARDR5VJQH3RVO6%2F20250624%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20250624T142201Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDYaCmV1LW5vcnRoLTEiSDBGAiEA6X9SU3o8cL4ZgfGtUhxaaEWx6LJib69dKSN9peN%2B4QQCIQCx4oVHBLbkOCc1Z7cViLf%2BX%2BQs8oHGhALE4hh3upQbfCqZAggvEAAaDDYyMjgwNjE0MjgyNiIMMcLa1XueUZKG1wucKvYBmJzM2Kt8Ug%2BWXvvFymyLywKW%2Fg7yCi4YhdyPo6Viq91EghDisgmtWbLRYUOOWKgIH2euBjkEIXCRiSNc5AAly3KPrDOHnVAw6veJWrUAIpR42NP9Qctpz%2FEskyGxcCU1udiNT9WX5vbEHdQNlczgbIr3Fc3RAX06L%2BzXrabvBNqtVvZul2MXBsFy1bfoE9dReZpNVvX9viWpyUHoUrGn4rkNQ9%2BfIbTrY4pHsdz4CegvFoZzQs4rIX5pzU%2BFZZR6ovKpHLFQItIbnBXNnUpFLL7aDm4DpT%2Fqv9y81haF%2B3rRRMct5vZaCwZrQ9adwuu%2Bg8Gsc88fMKDi6sIGOt4BmHwqZkyAxkXnF7n4yJzb2jZ4u01G2bXbfL0GRGxDvJNZVktLPFHq%2FAfAMCwPXHT7bKu8plMnU5HApY6IbWz4K65yQzAUcc2w1mn2FIigENzcVBGf9hkkRdYo8lATpZFu1FdRqCNwwvh%2FWZSU2FzP0NcU57Oyxg%2Fe87byx8h2ABdvGtHRO09zAYDrk4f0%2Fq9j%2BrqsFkvdNwHYug0LPhYr2S3HWoWJ9AMv3c3%2FMkw4KrBZ6TAoDvCXNJI%2Fa6LcF3SYBt6yme9%2BMni6ygAeWhHFQSuVILD8ZQq32qJjUEWn&X-Amz-Signature=90b35e2e1bba51ae12fc002e8294acf2e1a1d56d343bdd42d6262c05609f35db&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+								src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Shivam2.jpg"
                 alt="Shivam Agarwal - AI Frontend Engineer"
                 className="relative w-full h-full object-cover rounded-full border-2 border-white/20 shadow-2xl"
                 whileHover={{ 
@@ -196,13 +196,14 @@ const Hero: React.FC = () => {
             className="flex justify-center space-x-3 sm:space-x-4"
           >
             {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
-              { icon: Code, href: "#", label: "LeetCode" }
+              { icon: Github, href: "https://github.com/shivamagarwal2510", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/shivam-agarwal-b88a04201/", label: "LinkedIn" },
+              { icon: Code, href: "https://leetcode.com/u/Shivamagarwal2510/", label: "LeetCode" }
             ].map((social) => (
               <motion.a
                 key={social.label}
                 href={social.href}
+								target="_blank"
                 aria-label={social.label}
                 whileHover={{ scale: 1.1, y: -3, transition: { type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.95 }}

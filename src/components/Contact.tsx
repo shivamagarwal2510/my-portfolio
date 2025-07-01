@@ -51,21 +51,21 @@ const Contact: React.FC = () => {
     {
       name: 'LinkedIn',
       icon: <Linkedin size={20} sm:size={22} />,
-      href: '#',
+      href: 'https://www.linkedin.com/in/shivam-agarwal-b88a04201/',
       color: 'from-blue-600 to-blue-700',
       description: 'Professional Network'
     },
     {
       name: 'GitHub',
       icon: <Github size={20} sm:size={22} />,
-      href: '#',
+      href: 'https://github.com/shivamagarwal2510',
       color: 'from-gray-700 to-gray-800',
       description: 'Code Repository'
     },
     {
       name: 'LeetCode',
       icon: <LeetcodeIcon size={20} sm:size={22} />,
-      href: '#',
+      href: 'https://leetcode.com/u/Shivamagarwal2510/',
       color: 'from-yellow-600 to-orange-600',
       description: 'Coding Challenges'
     }
