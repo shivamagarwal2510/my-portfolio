@@ -1,17 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Heart, Code, Sparkles, Github, Linkedin, Mail } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Heart, Code, Sparkles, Github, Linkedin, Mail } from "lucide-react";
 
 const Footer: React.FC = () => {
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/shivamagarwal2510', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/shivam-agarwal-b88a04201/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:shivgun03@gmail.com', label: 'Email' }
+    { icon: Github, href: "https://github.com/shivamagarwal2510", label: "GitHub" },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/shivam-agarwal-b88a04201/",
+      label: "LinkedIn"
+    },
+    { icon: Mail, href: "mailto:shivgun03@gmail.com", label: "Email" }
   ];
 
   const footerContentVariant = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.6 }
+    }
   };
 
   const socialLinkVariant = {
@@ -52,22 +60,22 @@ const Footer: React.FC = () => {
               <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Shivam Agarwal
               </span>
-              <p className="text-gray-400 text-xs sm:text-sm">AI Frontend Engineer</p>
+              <p className="text-gray-400 text-xs sm:text-sm">Software Development Engineer</p>
             </div>
           </div>
-          
+
           <p className="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8 max-w-md mx-auto leading-relaxed">
-            Building the future of intelligent web development at{' '}
+            Building the future of intelligent web development at{" "}
             <span className="text-blue-400 font-semibold">Dualite</span>.
           </p>
-          
+
           <div className="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                target={social.label === 'Email' ? '_self' : '_blank'}
+                target={social.label === "Email" ? "_self" : "_blank"}
                 rel="noopener noreferrer"
                 custom={index}
                 variants={socialLinkVariant}
@@ -83,7 +91,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-6 sm:mb-8"></div>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -92,14 +100,17 @@ const Footer: React.FC = () => {
             className="flex items-center justify-center space-x-1.5 sm:space-x-2 text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6"
           >
             <span>Made with</span>
-            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
               <Heart className="text-red-500" size={14} sm:size={16} />
             </motion.div>
             <span>using</span>
             <Code className="text-blue-400" size={14} sm:size={16} />
             <span>React, TypeScript & Tailwind CSS</span>
           </motion.div>
-          
+
           <div className="pt-4 sm:pt-6 border-t border-gray-800/50">
             <p className="text-gray-500 text-xs sm:text-sm">
               © {new Date().getFullYear()} Shivam Agarwal. All rights reserved.
@@ -110,10 +121,22 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="absolute top-8 left-8 opacity-5">
-            <motion.div animate={{ y: [0, -5, 0], rotate: [0, 90, 180] }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }} className="text-xl">⚡</motion.div>
+            <motion.div
+              animate={{ y: [0, -5, 0], rotate: [0, 90, 180] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              className="text-xl"
+            >
+              ⚡
+            </motion.div>
           </div>
           <div className="absolute top-12 right-12 opacity-5">
-            <motion.div animate={{ y: [0, 5, 0], rotate: [0, -90, -180] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="text-xl">🚀</motion.div>
+            <motion.div
+              animate={{ y: [0, 5, 0], rotate: [0, -90, -180] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="text-xl"
+            >
+              🚀
+            </motion.div>
           </div>
         </motion.div>
       </div>
