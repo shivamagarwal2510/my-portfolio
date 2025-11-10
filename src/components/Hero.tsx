@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-primary rounded-full animate-pulse opacity-75"></div>
               <div className="absolute inset-0 bg-primary rounded-full blur-lg opacity-50"></div>
               <motion.img
-                src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Shivam2.jpg"
+                src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Screenshot+2025-11-10+at+2.34.39%E2%80%AFPM.png"
                 alt="Shivam Agarwal - AI Frontend Engineer"
                 className="relative w-full h-full object-cover rounded-full border-2 border-foreground/20 shadow-2xl"
                 whileHover={{
