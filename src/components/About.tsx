@@ -48,37 +48,29 @@ const About: React.FC = () => {
 
   const skillCategories = [
     {
-      icon: <Code className="text-blue-500" size={28} sm:size={32} />,
+      icon: <Code className="text-primary" size={28} sm:size={32} />,
       title: 'Frontend Magic',
-      gradient: 'from-blue-500 to-cyan-500',
-      color: 'text-blue-400',
       skills: ['React, Next.js, TypeScript', 'TailwindCSS, Framer Motion', 'Figma API, RTK Query', 'Streamlit, FastAPI']
     },
     {
-      icon: <Brain className="text-purple-500" size={28} sm:size={32} />,
+      icon: <Brain className="text-primary" size={28} sm:size={32} />,
       title: 'Programming',
-      gradient: 'from-purple-500 to-pink-500',
-      color: 'text-purple-400',
       skills: ['C++, Python', 'JavaScript, TypeScript', 'Advanced Algorithms']
     },
     {
-      icon: <Database className="text-green-500" size={28} sm:size={32} />,
+      icon: <Database className="text-primary" size={28} sm:size={32} />,
       title: 'Backend & DB',
-      gradient: 'from-green-500 to-emerald-500',
-      color: 'text-green-400',
       skills: ['Node.js, Express.js', 'MongoDB, Firebase', 'SQL, Git, GitHub']
     },
     {
-      icon: <Zap className="text-yellow-500" size={28} sm:size={32} />,
+      icon: <Zap className="text-primary" size={28} sm:size={32} />,
       title: 'AI & Tools',
-      gradient: 'from-yellow-500 to-orange-500',
-      color: 'text-yellow-400',
       skills: ['OpenAI, Claude', 'Langchain, RAG', 'Dualite Alpha, Cursor']
     }
   ];
 
   return (
-    <section id="about" className="py-16 sm:py-20 bg-gray-900 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 bg-background relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.08) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255,0.08) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.08) 75%), linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.08) 75%)',
@@ -96,22 +88,22 @@ const About: React.FC = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-blue-500/30"
+            className="inline-flex items-center space-x-2 bg-primary/10 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-primary/30"
             whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
-            <Sparkles className="text-blue-400" size={18} sm:size={20} />
-            <span className="text-white font-medium text-sm sm:text-base">About Me</span>
+            <Sparkles className="text-primary" size={18} sm:size={20} />
+            <span className="text-foreground font-medium text-sm sm:text-base">About Me</span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6">
             Crafting Digital
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent block">
+            <span className="text-primary block">
               Experiences
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl md:max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl md:max-w-3xl mx-auto leading-relaxed">
             I'm a passionate Frontend Engineer and AI specialist. Currently a{' '}
-            <span className="text-blue-400 font-semibold">Founding Engineer at Dualite</span>, developing 
+            <span className="text-primary font-semibold">Founding Engineer at Dualite</span>, developing 
             Alpha - an AI Frontend Engineer.
           </p>
         </motion.div>
@@ -124,21 +116,21 @@ const About: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="relative group h-full"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 rounded-xl sm:rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-            <div className="relative bg-gray-800/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
+            <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+            <div className="relative bg-surface/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-border hover:border-primary/50 transition-all duration-300 h-full flex flex-col">
               <div className="flex items-center mb-4 sm:mb-6">
                 <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
-                <h3 className="text-xl sm:text-2xl font-semibold text-white">Education</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground">Education</h3>
               </div>
               <div className="space-y-1.5 sm:space-y-2 flex-grow">
-                <h4 className="text-lg sm:text-xl font-medium bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <h4 className="text-lg sm:text-xl font-medium text-primary">
                   Bachelor of Technology
                 </h4>
-                <p className="text-gray-300 font-medium text-sm sm:text-base">Information Technology</p>
-                <p className="text-gray-400 text-sm sm:text-base">Harcourt Butler Technical University</p>
+                <p className="text-muted-foreground font-medium text-sm sm:text-base">Information Technology</p>
+                <p className="text-muted-foreground/80 text-sm sm:text-base">Harcourt Butler Technical University</p>
                 <div className="flex items-center justify-between text-xs sm:text-sm pt-2">
-                  <p className="text-gray-400">Dec 2020 - May 2024</p>
-                  <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-2.5 py-1 rounded-full font-semibold">
+                  <p className="text-muted-foreground/80">Dec 2020 - May 2024</p>
+                  <div className="bg-primary text-primary-foreground px-2.5 py-1 rounded-full font-semibold">
                     GPA: 8.22
                   </div>
                 </div>
@@ -153,14 +145,14 @@ const About: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="relative group h-full"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-xl sm:rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-            <div className="relative bg-gray-800/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 h-full flex flex-col">
+            <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+            <div className="relative bg-surface/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-border hover:border-primary/50 transition-all duration-300 h-full flex flex-col">
               <div className="flex items-center mb-4 sm:mb-6">
-                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-purple-400 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
-                <h3 className="text-xl sm:text-2xl font-semibold text-white">Core Fundamentals</h3>
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-primary rounded-full mr-2 sm:mr-3 animate-pulse"></div>
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground">Core Fundamentals</h3>
               </div>
               <div className="flex-grow">
-                <p className="text-gray-400 text-xs sm:text-sm mb-4 leading-relaxed">
+                <p className="text-muted-foreground/80 text-xs sm:text-sm mb-4 leading-relaxed">
                   Strong foundation in computer science fundamentals and theoretical concepts.
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:gap-3">
@@ -172,7 +164,7 @@ const About: React.FC = () => {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
-                      className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-center hover:scale-105 transition-transform duration-200"
+                      className="bg-primary/10 border border-primary/20 text-blue-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-center hover:scale-105 transition-transform duration-200"
                     >
                       {skill}
                     </motion.span>
@@ -183,7 +175,7 @@ const About: React.FC = () => {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
-                      className="col-span-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-center hover:scale-105 transition-transform duration-200"
+                      className="col-span-2 bg-primary/10 border border-primary/20 text-blue-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-center hover:scale-105 transition-transform duration-200"
                     >
                       Data Structures & Algorithms
                     </motion.span>
@@ -199,9 +191,9 @@ const About: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">
+          <h3 className="text-2xl sm:text-3xl font-bold text-foreground text-center mb-8 sm:mb-12">
             Skills &{' '}
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-primary">
               Expertise
             </span>
           </h3>
@@ -217,16 +209,16 @@ const About: React.FC = () => {
                 whileHover={{ y: -5, scale: 1.02, transition: { type: "spring", stiffness: 300 } }}
                 className="group relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover:opacity-15 rounded-xl sm:rounded-2xl blur-lg transition-all duration-500`}></div>
-                <div className="relative bg-gray-800/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full flex flex-col">
+                <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 rounded-xl sm:rounded-2xl blur-lg transition-all duration-500"></div>
+                <div className="relative bg-surface/60 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border hover:border-border/80 transition-all duration-300 h-full flex flex-col">
                   <div className="flex items-center mb-3 sm:mb-4">
                     <motion.div
                       whileHover={{ rotate: 15, transition: { type: "spring", stiffness: 400 } }}
-                      className="p-2 sm:p-3 bg-gray-700/50 rounded-lg sm:rounded-xl mr-2 sm:mr-3"
+                      className="p-2 sm:p-3 bg-background/50 rounded-lg sm:rounded-xl mr-2 sm:mr-3"
                     >
                       {category.icon}
                     </motion.div>
-                    <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
+                    <h4 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                       {category.title}
                     </h4>
                   </div>
@@ -239,10 +231,10 @@ const About: React.FC = () => {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="group/skill flex items-center space-x-1.5 sm:space-x-2 rounded-md p-1.5 hover:bg-white/[0.05] transition-all duration-200"
+                        className="group/skill flex items-center space-x-1.5 sm:space-x-2 rounded-md p-1.5 hover:bg-foreground/[0.05] transition-all duration-200"
                       >
-                        <ChevronRight className={`flex-shrink-0 w-4 h-4 ${category.color} transition-transform duration-200 group-hover/skill:scale-125`} />
-                        <span className="text-gray-300 text-xs sm:text-sm leading-relaxed group-hover/skill:text-white transition-colors duration-200">
+                        <ChevronRight className="flex-shrink-0 w-4 h-4 text-primary transition-transform duration-200 group-hover/skill:scale-125" />
+                        <span className="text-muted-foreground text-xs sm:text-sm leading-relaxed group-hover/skill:text-foreground transition-colors duration-200">
                           {skill}
                         </span>
                       </motion.div>

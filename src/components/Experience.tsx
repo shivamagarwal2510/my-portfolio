@@ -10,8 +10,6 @@ const Experience: React.FC = () => {
       location: 'Remote',
       period: 'October 2024 - Present',
       type: 'Full-time',
-      typeTagGradient: 'from-blue-500 to-cyan-600',
-      iconColor: 'text-blue-400',
       achievements: [
         'Building Alpha, an AI Frontend Engineer using Remix and TypeScript with sophisticated architecture integrating Anthropic\'s AI models',
         'Engineered AI-driven code generation system with custom prompt engineering techniques for high-quality, modular code structures'
@@ -24,8 +22,6 @@ const Experience: React.FC = () => {
       location: 'Remote',
       period: 'November 2023 - September 2024',
       type: 'Internship',
-      typeTagGradient: 'from-green-400 to-emerald-500',
-      iconColor: 'text-green-400',
       achievements: [
         'Developed dashboard using Next.js and MongoDB with Figma OAuth, increasing user base from 4,000 to 15,000',
         'Built Component mode improving graphical precision by 90%, securing ₹1.25 crore in investor funding',
@@ -39,8 +35,6 @@ const Experience: React.FC = () => {
       location: 'Remote',
       period: 'March 2023 - April 2023',
       type: 'Internship',
-      typeTagGradient: 'from-green-400 to-emerald-500',
-      iconColor: 'text-green-400',
       achievements: [
         'Built babynama.com from scratch using Next.js 13, TypeScript, and Tailwind CSS, attracting 10,000+ visitors in first month',
         'Integrated Payment APIs leading to 20% increase in conversion rates',
@@ -69,7 +63,7 @@ const Experience: React.FC = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 150, damping: 15, delay: i * 0.05 + 0.2 } // Staggered delay after parent
+      transition: { type: "spring", stiffness: 150, damping: 15, delay: i * 0.05 + 0.2 }
     })
   };
 
@@ -78,17 +72,17 @@ const Experience: React.FC = () => {
     visible: (i: number) => ({
       opacity: 1,
       x: 0,
-      transition: { type: "tween", ease: "easeOut", duration: 0.4, delay: i * 0.07 + 0.3 } // Staggered delay after parent
+      transition: { type: "tween", ease: "easeOut", duration: 0.4, delay: i * 0.07 + 0.3 }
     })
   };
 
 
   return (
-    <section id="experience" className="py-16 sm:py-20 bg-black relative overflow-hidden">
+    <section id="experience" className="py-16 sm:py-20 bg-background relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-72 sm:h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-72 sm:h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 bg-pink-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-72 sm:h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-72 sm:h-72 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -100,20 +94,20 @@ const Experience: React.FC = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-blue-500/30"
+            className="inline-flex items-center space-x-2 bg-primary/10 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-primary/30"
             whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
-            <Sparkles className="text-blue-400" size={18} sm:size={20} />
-            <span className="text-white font-medium text-sm sm:text-base">Professional Journey</span>
+            <Sparkles className="text-primary" size={18} sm:size={20} />
+            <span className="text-foreground font-medium text-sm sm:text-base">Professional Journey</span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6">
             Work
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent block">
+            <span className="text-primary block">
               Experience
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl md:max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl md:max-w-2xl mx-auto">
             My journey through innovative companies, building cutting-edge solutions 
             and driving technological advancement.
           </p>
@@ -131,42 +125,42 @@ const Experience: React.FC = () => {
               className="relative pl-8 sm:pl-10 mb-10 sm:mb-12 last:mb-0"
             >
               <motion.div
-                className="absolute left-0 top-1 sm:top-2.5 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 rounded-full shadow-lg shadow-purple-500/40"
+                className="absolute left-0 top-1 sm:top-2.5 w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full shadow-lg shadow-primary/40"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 10, delay: 0.2 + index * 0.15 }}
                 viewport={{ once: true }}
               />
               {index < experiences.length - 1 && (
-                <div className="absolute left-[5px] sm:left-[7px] top-5 sm:top-7 w-px h-[calc(100%_-_0.5rem)] bg-gray-700/60" />
+                <div className="absolute left-[5px] sm:left-[7px] top-5 sm:top-7 w-px h-[calc(100%_-_0.5rem)] bg-border/60" />
               )}
 
-              <div className="relative bg-black/60 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-gray-800/60 hover:border-gray-700/80 transition-colors duration-300">
+              <div className="relative bg-surface/60 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-border/60 hover:border-border/80 transition-colors duration-300">
                 <div className="mb-3 sm:mb-4">
                   <div className="flex items-center mb-2 sm:mb-3">
-                    <div className={`p-1.5 sm:p-2 bg-green-500/10 rounded-md mr-2 sm:mr-3 border border-green-500/30`}>
-                      <Building size={16} sm:size={18} className={`${exp.iconColor || 'text-green-400'}`} />
+                    <div className="p-1.5 sm:p-2 bg-primary/10 rounded-md mr-2 sm:mr-3 border border-primary/20">
+                      <Building size={16} sm:size={18} className="text-primary" />
                     </div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{exp.title}</h3>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">{exp.title}</h3>
                   </div>
 
                   <div className="pl-0 sm:pl-1 space-y-1 sm:space-y-1.5 mb-3 sm:mb-4">
-                    <div className="flex items-center text-gray-400 text-xs sm:text-sm">
+                    <div className="flex items-center text-muted-foreground text-xs sm:text-sm">
                       <Building size={12} sm:size={14} className="mr-1.5 sm:mr-2 opacity-60" />
                       <span>{exp.company}</span>
                     </div>
-                    <div className="flex items-center text-gray-400 text-xs sm:text-sm">
+                    <div className="flex items-center text-muted-foreground text-xs sm:text-sm">
                       <MapPin size={12} sm:size={14} className="mr-1.5 sm:mr-2 opacity-60" />
                       <span>{exp.location}</span>
                     </div>
-                    <div className="flex items-center text-purple-400 font-medium text-xs sm:text-sm">
+                    <div className="flex items-center text-primary font-medium text-xs sm:text-sm">
                       <Calendar size={12} sm:size={14} className="mr-1.5 sm:mr-2" />
                       <span>{exp.period}</span>
                     </div>
                   </div>
 
                   <div className="pl-0 sm:pl-1">
-                    <span className={`bg-gradient-to-r ${exp.typeTagGradient} text-white px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold shadow-sm`}>
+                    <span className="bg-primary text-primary-foreground px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold shadow-sm">
                       {exp.type}
                     </span>
                   </div>
@@ -181,10 +175,10 @@ const Experience: React.FC = () => {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
-                      className="text-center p-1.5 px-2 sm:p-2 sm:px-2.5 bg-slate-800/70 rounded-md sm:rounded-lg border border-slate-700/50 min-w-[60px] sm:min-w-[70px] flex-grow sm:flex-grow-0"
+                      className="text-center p-1.5 px-2 sm:p-2 sm:px-2.5 bg-background/70 rounded-md sm:rounded-lg border border-border/50 min-w-[60px] sm:min-w-[70px] flex-grow sm:flex-grow-0"
                     >
-                      <div className="text-xs sm:text-sm font-bold text-white">{value}</div>
-                      <div className="text-[9px] sm:text-xs text-gray-400 capitalize">{key}</div>
+                      <div className="text-xs sm:text-sm font-bold text-foreground">{value}</div>
+                      <div className="text-[9px] sm:text-xs text-muted-foreground capitalize">{key}</div>
                     </motion.div>
                   ))}
                 </div>
@@ -200,8 +194,8 @@ const Experience: React.FC = () => {
                       viewport={{ once: true }}
                       className="flex items-start"
                     >
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full mt-[6px] sm:mt-[7px] mr-2 sm:mr-2.5 flex-shrink-0"></div>
-                      <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">{achievement}</p>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full mt-[6px] sm:mt-[7px] mr-2 sm:mr-2.5 flex-shrink-0"></div>
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{achievement}</p>
                     </motion.div>
                   ))}
                 </div>

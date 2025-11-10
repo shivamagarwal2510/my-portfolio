@@ -37,24 +37,20 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Reset status
     setSubmitStatus("idle");
     setIsLoading(true);
 
     try {
-      // EmailJS configuration - you'll need to replace these with your actual values
       const serviceId = "service_3allzsl";
       const templateId = "template_pcjs1fm";
       const publicKey = "tjPD-r3k8BQ5JDq3V";
 
-      // Template parameters that match your EmailJS template
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_name: "Shivam Agarwal" // Your name
+        to_name: "Shivam Agarwal"
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -77,25 +73,22 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="text-blue-400" size={24} sm:size={28} />,
+      icon: <Mail className="text-primary-foreground" size={24} sm:size={28} />,
       title: "Email",
       value: "shivgun03@gmail.com",
       href: "mailto:shivgun03@gmail.com",
-      gradient: "from-blue-500 to-cyan-500"
     },
     {
-      icon: <Phone className="text-green-400" size={24} sm:size={28} />,
+      icon: <Phone className="text-primary-foreground" size={24} sm:size={28} />,
       title: "Phone",
       value: "+91 7571094727",
       href: "tel:+917571094727",
-      gradient: "from-green-500 to-emerald-500"
     },
     {
-      icon: <MapPin className="text-purple-400" size={24} sm:size={28} />,
+      icon: <MapPin className="text-primary-foreground" size={24} sm:size={28} />,
       title: "Location",
       value: "UP, India",
       href: "#",
-      gradient: "from-purple-500 to-pink-500"
     }
   ];
 
@@ -104,21 +97,18 @@ const Contact: React.FC = () => {
       name: "LinkedIn",
       icon: <Linkedin size={20} sm:size={22} />,
       href: "https://www.linkedin.com/in/shivam-agarwal-b88a04201/",
-      color: "from-blue-600 to-blue-700",
       description: "Professional Network"
     },
     {
       name: "GitHub",
       icon: <Github size={20} sm:size={22} />,
       href: "https://github.com/shivamagarwal2510",
-      color: "from-gray-700 to-gray-800",
       description: "Code Repository"
     },
     {
       name: "LeetCode",
       icon: <LeetcodeIcon size={20} sm:size={22} />,
       href: "https://leetcode.com/u/Shivamagarwal2510/",
-      color: "from-yellow-600 to-orange-600",
       description: "Coding Challenges"
     }
   ];
@@ -162,7 +152,6 @@ const Contact: React.FC = () => {
   const formItemVariant = {
     hidden: { opacity: 0, y: 20 },
     visible: (delay: number = 0) => ({
-      // Allow passing custom delay
       opacity: 1,
       y: 0,
       transition: { type: "spring", stiffness: 120, damping: 18, delay: delay }
@@ -170,11 +159,11 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-black relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 bg-background relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 sm:w-96 sm:h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 sm:w-96 sm:h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-3/4 left-3/4 w-56 h-56 sm:w-64 sm:h-64 bg-pink-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 sm:w-96 sm:h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 sm:w-96 sm:h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-3/4 left-3/4 w-56 h-56 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -186,20 +175,20 @@ const Contact: React.FC = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-blue-500/30"
+            className="inline-flex items-center space-x-2 bg-primary/10 backdrop-blur-md rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-4 sm:mb-6 border border-primary/30"
             whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
-            <MessageSquare className="text-blue-400" size={18} sm:size={20} />
-            <span className="text-white font-medium text-sm sm:text-base">Let's Connect</span>
+            <MessageSquare className="text-primary" size={18} sm:size={20} />
+            <span className="text-foreground font-medium text-sm sm:text-base">Let's Connect</span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6">
             Get
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent block">
+            <span className="text-primary block">
               In Touch
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl md:max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl md:max-w-2xl mx-auto">
             Ready to discuss your next project or collaboration? I'd love to hear from you.
           </p>
         </motion.div>
@@ -213,8 +202,8 @@ const Contact: React.FC = () => {
             className="space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 flex items-center">
-                <Sparkles className="text-blue-400 mr-2 sm:mr-3" size={28} sm:size={32} />
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 sm:mb-8 flex items-center">
+                <Sparkles className="text-primary mr-2 sm:mr-3" size={28} sm:size={32} />
                 Contact Details
               </h3>
 
@@ -236,20 +225,20 @@ const Contact: React.FC = () => {
                     className="group relative block"
                   >
                     <div
-                      className={`absolute inset-0 bg-gradient-to-r ${info.gradient} opacity-0 group-hover:opacity-15 rounded-xl sm:rounded-2xl blur-lg transition-all duration-500`}
+                      className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 rounded-xl sm:rounded-2xl blur-lg transition-all duration-500"
                     ></div>
-                    <div className="relative flex items-center space-x-3 sm:space-x-4 p-4 sm:p-5 bg-gray-900/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300">
+                    <div className="relative flex items-center space-x-3 sm:space-x-4 p-4 sm:p-5 bg-surface/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-border hover:border-border/80 transition-all duration-300">
                       <motion.div
                         whileHover={{ rotate: 10, transition: { type: "spring", stiffness: 400 } }}
-                        className={`p-3 sm:p-4 bg-gradient-to-r ${info.gradient} rounded-lg sm:rounded-xl shadow-md`}
+                        className="p-3 sm:p-4 bg-primary rounded-lg sm:rounded-xl shadow-md"
                       >
                         {info.icon}
                       </motion.div>
                       <div>
-                        <h4 className="font-semibold text-white text-base sm:text-lg mb-0.5 sm:mb-1">
+                        <h4 className="font-semibold text-foreground text-base sm:text-lg mb-0.5 sm:mb-1">
                           {info.title}
                         </h4>
-                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-200 text-sm sm:text-base">
+                        <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200 text-sm sm:text-base">
                           {info.value}
                         </p>
                       </div>
@@ -260,7 +249,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
+              <h4 className="text-xl sm:text-2xl font-semibold text-foreground mb-4 sm:mb-6">
                 Connect with me
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -271,7 +260,7 @@ const Contact: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     custom={index}
-                    variants={listItemVariant} // Reusing listItemVariant
+                    variants={listItemVariant}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
@@ -283,10 +272,10 @@ const Contact: React.FC = () => {
                     className="group relative"
                   >
                     <div
-                      className={`absolute inset-0 bg-gradient-to-r ${link.color} opacity-0 group-hover:opacity-25 rounded-lg sm:rounded-xl blur-md transition-all duration-500`}
+                      className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 rounded-lg sm:rounded-xl blur-md transition-all duration-500"
                     ></div>
                     <div
-                      className={`relative flex items-center space-x-2 sm:space-x-3 p-3 sm:p-4 bg-gradient-to-r ${link.color} rounded-lg sm:rounded-xl text-white transition-all duration-200 shadow-md hover:shadow-lg`}
+                      className="relative flex items-center space-x-2 sm:space-x-3 p-3 sm:p-4 bg-surface rounded-lg sm:rounded-xl text-foreground transition-all duration-200 shadow-md hover:shadow-lg"
                     >
                       {link.icon}
                       <div>
@@ -307,9 +296,9 @@ const Contact: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl sm:rounded-3xl blur-xl"></div>
-            <div className="relative bg-gray-900/60 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-800/50">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
+            <div className="absolute inset-0 bg-primary/5 rounded-2xl sm:rounded-3xl blur-xl"></div>
+            <div className="relative bg-surface/60 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-border">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
                 Send me a message
               </h3>
 
@@ -324,7 +313,7 @@ const Contact: React.FC = () => {
                   >
                     <label
                       htmlFor="name"
-                      className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5"
+                      className="block text-xs sm:text-sm font-medium text-muted-foreground mb-1.5"
                     >
                       Full Name
                     </label>
@@ -335,7 +324,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                      className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-background/50 border border-border rounded-lg sm:rounded-xl text-foreground placeholder-muted-foreground/70 focus:ring-1 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-sm sm:text-base"
                       placeholder="Your full name"
                     />
                   </motion.div>
@@ -348,7 +337,7 @@ const Contact: React.FC = () => {
                   >
                     <label
                       htmlFor="email"
-                      className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5"
+                      className="block text-xs sm:text-sm font-medium text-muted-foreground mb-1.5"
                     >
                       Email Address
                     </label>
@@ -359,7 +348,7 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                      className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-background/50 border border-border rounded-lg sm:rounded-xl text-foreground placeholder-muted-foreground/70 focus:ring-1 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-sm sm:text-base"
                       placeholder="your.email@example.com"
                     />
                   </motion.div>
@@ -374,7 +363,7 @@ const Contact: React.FC = () => {
                 >
                   <label
                     htmlFor="subject"
-                    className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5"
+                    className="block text-xs sm:text-sm font-medium text-muted-foreground mb-1.5"
                   >
                     Subject
                   </label>
@@ -385,7 +374,7 @@ const Contact: React.FC = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-background/50 border border-border rounded-lg sm:rounded-xl text-foreground placeholder-muted-foreground/70 focus:ring-1 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-sm sm:text-base"
                     placeholder="What's this about?"
                   />
                 </motion.div>
@@ -399,7 +388,7 @@ const Contact: React.FC = () => {
                 >
                   <label
                     htmlFor="message"
-                    className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5"
+                    className="block text-xs sm:text-sm font-medium text-muted-foreground mb-1.5"
                   >
                     Message
                   </label>
@@ -410,7 +399,7 @@ const Contact: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-background/50 border border-border rounded-lg sm:rounded-xl text-foreground placeholder-muted-foreground/70 focus:ring-1 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none text-sm sm:text-base"
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </motion.div>
@@ -429,10 +418,10 @@ const Contact: React.FC = () => {
                     transition: { type: "spring", stiffness: 300 }
                   }}
                   whileTap={{ scale: isLoading ? 1 : 0.98 }}
-                  className={`w-full text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold transition-all duration-200 flex items-center justify-center space-x-2 ${
+                  className={`w-full text-primary-foreground px-6 py-2.5 sm:px-8 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold transition-all duration-200 flex items-center justify-center space-x-2 ${
                     isLoading
-                      ? "bg-gray-600 cursor-not-allowed"
-                      : "bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-md hover:shadow-blue-500/25"
+                      ? "bg-surface cursor-not-allowed"
+                      : "bg-primary hover:shadow-md hover:shadow-primary/25"
                   }`}
                 >
                   {isLoading ? (
@@ -448,15 +437,14 @@ const Contact: React.FC = () => {
                   )}
                 </motion.button>
 
-                {/* Status Message */}
                 {submitStatus !== "idle" && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`flex items-center space-x-2 p-3 rounded-lg ${
                       submitStatus === "success"
-                        ? "bg-green-500/20 border border-green-500/30 text-green-400"
-                        : "bg-red-500/20 border border-red-500/30 text-red-400"
+                        ? "bg-green-500/10 border border-green-500/20 text-green-400"
+                        : "bg-red-500/10 border border-red-500/20 text-red-400"
                     }`}
                   >
                     {submitStatus === "success" ? (

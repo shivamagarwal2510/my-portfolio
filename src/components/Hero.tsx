@@ -58,24 +58,12 @@ const Hero: React.FC = () => {
     }
   };
 
-  const floatingElementTransition = (i: number) => ({
-    x: [0, 50 + i * 5, 0],
-    y: [0, -50 - i * 5, 0],
-    scale: [1, 1.05 + i * 0.02, 1],
-    transition: {
-      duration: 15 + i * 2,
-      repeat: Infinity,
-      ease: "linear"
-    }
-  });
-
   return (
     <section
       id="home"
-      className="h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
+      className="h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20 bg-background"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-        <div className="absolute inset-0 bg-black/20">
+      <div className="absolute inset-0">
           <div
             className="absolute inset-0"
             style={{
@@ -84,15 +72,23 @@ const Hero: React.FC = () => {
               backgroundSize: "30px 30px"
             }}
           ></div>
-        </div>
       </div>
 
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-r from-cyan-400/5 to-blue-600/5 blur-xl"
-            animate={floatingElementTransition(i).x ? floatingElementTransition(i) : undefined}
+            className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-primary/5 blur-xl"
+            animate={{
+                x: [0, 50 + i * 5, 0],
+                y: [0, -50 - i * 5, 0],
+                scale: [1, 1.05 + i * 0.02, 1],
+                transition: {
+                  duration: 15 + i * 2,
+                  repeat: Infinity,
+                  ease: "linear"
+                }
+              }}
             style={{
               left: `${10 + i * 22}%`,
               top: `${10 + i * 20}%`
@@ -113,25 +109,24 @@ const Hero: React.FC = () => {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-white/20"
+              className="inline-flex items-center space-x-2 bg-surface/50 backdrop-blur-md rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-border"
             >
-              <Sparkles className="text-yellow-400" size={16} sm:size={18} />
-              <span className="text-white font-medium text-xs sm:text-sm">
+              <Sparkles className="text-blue-400" size={16} sm:size={18} />
+              <span className="text-foreground font-medium text-xs sm:text-sm">
                 Available for new opportunities
               </span>
             </motion.div>
 
-            {/* Profile Image */}
             <motion.div
               variants={profileImageVariants}
               className="relative mx-auto w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full animate-pulse opacity-75"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-lg opacity-50"></div>
+              <div className="absolute inset-0 bg-primary rounded-full animate-pulse opacity-75"></div>
+              <div className="absolute inset-0 bg-primary rounded-full blur-lg opacity-50"></div>
               <motion.img
                 src="https://portfolio-shivamagarwal.s3.eu-north-1.amazonaws.com/Shivam2.jpg"
                 alt="Shivam Agarwal - AI Frontend Engineer"
-                className="relative w-full h-full object-cover rounded-full border-2 border-white/20 shadow-2xl"
+                className="relative w-full h-full object-cover rounded-full border-2 border-foreground/20 shadow-2xl"
                 whileHover={{
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 300 }
@@ -139,7 +134,7 @@ const Hero: React.FC = () => {
                 loading="eager"
               />
               <motion.div
-                className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-green-400 rounded-full border-2 border-white shadow-lg"
+                className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-green-400 rounded-full border-2 border-background shadow-lg"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -147,11 +142,11 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <div className="space-y-2 sm:space-y-3">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white relative">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground relative">
               <motion.span variants={titleSpan1Variants}>Shivam </motion.span>
               <motion.span
                 variants={titleSpan2Variants}
-                className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+                className="text-primary"
               >
                 Agarwal
               </motion.span>
@@ -168,20 +163,20 @@ const Hero: React.FC = () => {
               variants={slowItemVariants}
               className="flex items-center justify-center space-x-2"
             >
-              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 font-medium">
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/50 rounded-full animate-pulse"></div>
+              <p className="text-sm sm:text-base md:text-lg text-foreground/90 font-medium">
                 Software Development Engineer
               </p>
-              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-400 rounded-full animate-pulse"></div>
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/50 rounded-full animate-pulse"></div>
             </motion.div>
           </div>
 
           <motion.p
             variants={slowItemVariants}
-            className="text-xs sm:text-sm md:text-base text-white/80 max-w-xs sm:max-w-lg md:max-w-xl mx-auto leading-relaxed"
+            className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xs sm:max-w-lg md:max-w-xl mx-auto leading-relaxed"
           >
             Building the future of AI-powered frontend development at{" "}
-            <span className="text-cyan-400 font-semibold">Dualite</span>. Passionate about creating
+            <span className="text-primary font-semibold">Dualite</span>. Passionate about creating
             intelligent systems that generate beautiful, responsive user interfaces.
           </motion.p>
 
@@ -198,7 +193,7 @@ const Hero: React.FC = () => {
                 key={index}
                 href={item.href}
                 whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
-                className="flex items-center space-x-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-white/90 text-xs"
+                className="flex items-center space-x-1.5 bg-surface/50 backdrop-blur-md border border-border rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-foreground/90 text-xs"
               >
                 <item.icon size={12} sm:size={14} />
                 <span className="hidden sm:inline">{item.text}</span>
@@ -229,7 +224,7 @@ const Hero: React.FC = () => {
                 aria-label={social.label}
                 whileHover={{ scale: 1.1, y: -3, transition: { type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.95 }}
-                className="group p-2.5 sm:p-3 bg-white/10 backdrop-blur-md text-white rounded-lg sm:rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20 hover:shadow-lg hover:shadow-cyan-500/20"
+                className="group p-2.5 sm:p-3 bg-surface/50 backdrop-blur-md text-foreground rounded-lg sm:rounded-xl hover:bg-surface transition-all duration-300 border border-border hover:shadow-lg hover:shadow-primary/20"
               >
                 <social.icon size={16} sm:size={18} />
               </motion.a>
@@ -249,9 +244,9 @@ const Hero: React.FC = () => {
               animate={{ y: [0, 4, 0] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="p-2 sm:p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+              <div className="p-2 sm:p-2.5 rounded-full bg-surface/50 backdrop-blur-md border border-border group-hover:bg-surface transition-all duration-300">
                 <ArrowDown
-                  className="text-white group-hover:text-cyan-400 transition-colors"
+                  className="text-foreground group-hover:text-primary transition-colors"
                   size={16}
                   sm:size={18}
                 />

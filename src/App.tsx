@@ -12,12 +12,14 @@ function App() {
   return (
     <div className="font-inter">
       <Header />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Achievements />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Achievements />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
