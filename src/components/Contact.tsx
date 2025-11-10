@@ -75,8 +75,8 @@ const Contact: React.FC = () => {
     {
       icon: <Mail className="text-primary-foreground" size={24} sm:size={28} />,
       title: "Email",
-      value: "shivgun03@gmail.com",
-      href: "mailto:shivgun03@gmail.com",
+      value: "agarwalshivam503@gmail.com",
+      href: "mailto:agarwalshivam503@gmail.com",
     },
     {
       icon: <Phone className="text-primary-foreground" size={24} sm:size={28} />,

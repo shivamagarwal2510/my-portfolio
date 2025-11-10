@@ -185,7 +185,7 @@ const Hero: React.FC = () => {
             className="flex flex-wrap justify-center gap-2 sm:gap-3"
           >
             {[
-              { icon: Mail, text: "shivgun03@gmail.com", href: "mailto:shivgun03@gmail.com" },
+              { icon: Mail, text: "agarwalshivam503@gmail.com", href: "mailto:agarwalshivam503@gmail.com" },
               { icon: Phone, text: "+91 7571094727", href: "tel:+917571094727" },
               { icon: MapPin, text: "UP, India", href: "#" }
             ].map((item, index) => (

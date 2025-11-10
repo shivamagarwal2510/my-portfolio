@@ -11,10 +11,14 @@ const Experience: React.FC = () => {
       period: 'October 2024 - Present',
       type: 'Full-time',
       achievements: [
-        'Building Alpha, an AI Frontend Engineer using Remix and TypeScript with sophisticated architecture integrating Anthropic\'s AI models',
-        'Engineered AI-driven code generation system with custom prompt engineering techniques for high-quality, modular code structures'
+        `Collaborated with a team of 5 engineers to architect and ship the core features for an AI-driven code generation platform, scaling it from launch to 30,000+ users in 8 months.`,
+        'Developed the primary AI generation engine using Remix and TypeScript, implementing custom prompt engineering with Anthropic models to translate user requirements into high-quality code.',
+				`Reduced client drop-offs by 39% by engineering a resilient, async data pipeline; leveraged IndexedDB for instant UI
+buffering while routing large data to Google Cloud and Postgress via a Redis queue with exponential backoff.`,
+				`Automated the end-to-end ”prompt-to-repository” workflow by integrating Supabase for data persistence and
+implementing full GitHub synchronization for user version control.`
       ],
-      metrics: { funding: '₹1.25Cr', users: '15k+', precision: '90%' }
+      metrics: { users: '30k+', retention_rate: '61%' }
     },
     {
       title: 'SDE Intern',
@@ -23,11 +27,11 @@ const Experience: React.FC = () => {
       period: 'November 2023 - September 2024',
       type: 'Internship',
       achievements: [
-        'Developed dashboard using Next.js and MongoDB with Figma OAuth, increasing user base from 4,000 to 15,000',
-        'Built Component mode improving graphical precision by 90%, securing ₹1.25 crore in investor funding',
-        'Redesigned modern UI for plugin, driving 30% boost in user engagement'
+        'Engineered a scalable user dashboard using Next.js and MongoDB, streamlining Figma OAuth and authentication to grow the active user base from 4,000 to 20,000.',
+        'Architected ”Component Mode” to generate modular code and designed a vector-positioning algorithm that improved graphical precision by 90%, key features that helped secure first pre-seed funding.',
+        'Redesigned the Figma plugin, implementing a modern, intuitive interface driving 30% increase in user engagement.'
       ],
-      metrics: { growth: '275%', engagement: '+30%', funding: '₹1.25Cr' }
+      metrics: { growth: '275%', engagement: '+30%' }
     },
     {
       title: 'Frontend Developer Intern',
@@ -36,9 +40,7 @@ const Experience: React.FC = () => {
       period: 'March 2023 - April 2023',
       type: 'Internship',
       achievements: [
-        'Built babynama.com from scratch using Next.js 13, TypeScript, and Tailwind CSS, attracting 10,000+ visitors in first month',
-        'Integrated Payment APIs leading to 20% increase in conversion rates',
-        'Created 5+ reusable ReactJS components, reducing development time by 40%'
+        'Built and deployed key site modules and integrated payment and WhatsApp APIs to enhance user interaction. This work, built on Next.js 13 and TypeScript, helped draw 10,000+ unique visitors.'
       ],
       metrics: { visitors: '10k+', conversion: '+20%', efficiency: '+40%' }
     }

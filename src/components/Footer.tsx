@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       href: "https://www.linkedin.com/in/shivam-agarwal-b88a04201/",
       label: "LinkedIn"
     },
-    { icon: Mail, href: "mailto:shivgun03@gmail.com", label: "Email" }
+    { icon: Mail, href: "mailto:agarwalshivam503@gmail.com", label: "Email" }
   ];
 
   const footerContentVariant = {

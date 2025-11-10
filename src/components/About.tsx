@@ -49,8 +49,8 @@ const About: React.FC = () => {
   const skillCategories = [
     {
       icon: <Code className="text-primary" size={28} sm:size={32} />,
-      title: 'Frontend Magic',
-      skills: ['React, Next.js, TypeScript', 'TailwindCSS, Framer Motion', 'Figma API, RTK Query', 'Streamlit, FastAPI']
+      title: 'Software & Frontend',
+      skills: ['React, Next.js, Remix', 'TypeScript, Redux Toolkit', 'Tailwind CSS, Framer Motion', 'Figma & Figma API']
     },
     {
       icon: <Brain className="text-primary" size={28} sm:size={32} />,
@@ -60,12 +60,12 @@ const About: React.FC = () => {
     {
       icon: <Database className="text-primary" size={28} sm:size={32} />,
       title: 'Backend & DB',
-      skills: ['Node.js, Express.js', 'MongoDB, Firebase', 'SQL, Git, GitHub']
+      skills: ['Node.js, Express.js', 'SQL, MongoDB, Firebase', 'Postgress', 'Git & GitHub']
     },
     {
       icon: <Zap className="text-primary" size={28} sm:size={32} />,
       title: 'AI & Tools',
-      skills: ['OpenAI, Claude', 'Langchain, RAG', 'Dualite Alpha, Cursor']
+      skills: ['FastAPI, Streamlit', 'Langchain, Pinecone', 'OpenAI, Claude', 'Dualite Alpha, Cursor']
     }
   ];
 
@@ -156,7 +156,7 @@ const About: React.FC = () => {
                   Strong foundation in computer science fundamentals and theoretical concepts.
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                  {['Operating System', 'OOPs', 'DBMS', 'Computer Networks'].map((skill, index) => (
+                  {['Operating System', 'OOPs', 'DBMS', 'Data Structures & Algorithms'].map((skill, index) => (
                     <motion.span
                       key={skill}
                       custom={index}
@@ -169,16 +169,6 @@ const About: React.FC = () => {
                       {skill}
                     </motion.span>
                   ))}
-                   <motion.span
-                      custom={4}
-                      variants={skillItemVariant}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.2 }}
-                      className="col-span-2 bg-primary/10 border border-primary/20 text-blue-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-center hover:scale-105 transition-transform duration-200"
-                    >
-                      Data Structures & Algorithms
-                    </motion.span>
                 </div>
               </div>
             </div>
