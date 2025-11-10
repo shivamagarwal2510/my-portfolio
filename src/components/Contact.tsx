@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const serviceId = "service_3allzsl";
+      const serviceId = "service_69ln76e";
       const templateId = "template_pcjs1fm";
       const publicKey = "tjPD-r3k8BQ5JDq3V";
 
