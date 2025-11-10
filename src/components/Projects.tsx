@@ -7,13 +7,13 @@ const Projects: React.FC = () => {
     {
       title: 'AutoDoc',
       icon: <Bot className="text-primary-foreground" size={32} />,
-      description: 'Revolutionary AI-powered documentation system using RAG with vector embeddings in Pinecone. Leverages OpenAI and Anthropic\'s Claude for intelligent, context-aware documentation generation.',
-      technologies: ['FastAPI', 'Streamlit', 'OpenAI', 'Claude', 'Pinecone', 'GitHub API'],
+      description: 'Architected an intelligent documentation synchronizer using FastAPI and Streamlit to eliminate manual updates and ensure 100% consistency between the codebase and documentation.',
+      technologies: ['FastAPI', 'Streamlit', 'Claude 3.5', 'Pinecone', 'GitHub API', 'RAG'],
       features: [
-        'RAG-based documentation',
-        'Real-time code change tracking',
-        'Intelligent documentation consistency',
-        'Automated Pull Request creation'
+        'Event-driven workflow via GitHub App',
+        'AI pipeline for code change analysis',
+        'RAG pipeline with Pinecone & Claude 3.5',
+        'Automated documentation PR generation'
       ],
       githubUrl: 'https://github.com/shivamagarwal2510/AutoDoc',
     },

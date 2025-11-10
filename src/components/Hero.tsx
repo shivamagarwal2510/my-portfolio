@@ -175,9 +175,7 @@ const Hero: React.FC = () => {
             variants={slowItemVariants}
             className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xs sm:max-w-lg md:max-w-xl mx-auto leading-relaxed"
           >
-            Building the future of AI-powered frontend development at{" "}
-            <span className="text-primary font-semibold">Dualite</span>. Passionate about creating
-            intelligent systems that generate beautiful, responsive user interfaces.
+            I'm a Full-Stack Engineer who turns Generative AI concepts into production ready products. I architect resilient, scalable systems, growing <a href="https://dualite.dev/" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">Dualite</a> from launch to 30,000 users.
           </motion.p>
 
           <motion.div

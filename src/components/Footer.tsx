@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
 
           <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8 max-w-md mx-auto leading-relaxed">
             Building the future of intelligent web development at{" "}
-            <span className="text-primary font-semibold">Dualite</span>.
+            <a href="https://dualite.dev/" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">Dualite</a>.
           </p>
 
           <div className="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">

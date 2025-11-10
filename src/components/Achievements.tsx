@@ -6,10 +6,10 @@ const Achievements: React.FC = () => {
   const achievements = [
     {
       icon: <Crown className="text-primary-foreground" size={32} sm:size={40} />,
-      title: '₹1.25 Crore Funding',
-      description: 'Key contributor to securing investor funding at Dualite through innovative development.',
+      title: 'Seed Funding',
+      description: 'Key contributor to securing seed funding at Dualite through innovative development.',
       category: 'Business Impact',
-      metric: '₹1.25Cr',
+      metric: 'Seed Funding',
       bgIcon: '💰'
     },
     {

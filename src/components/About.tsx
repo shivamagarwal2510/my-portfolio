@@ -50,7 +50,7 @@ const About: React.FC = () => {
     {
       icon: <Code className="text-primary" size={28} sm:size={32} />,
       title: 'Software & Frontend',
-      skills: ['React, Next.js, Remix', 'TypeScript, Redux Toolkit', 'Tailwind CSS, Framer Motion', 'Figma & Figma API']
+      skills: ['React, Next.js, Remix', 'TypeScript, Redux Toolkit', 'Tailwind CSS', 'Figma & Figma API']
     },
     {
       icon: <Brain className="text-primary" size={28} sm:size={32} />,
@@ -102,9 +102,9 @@ const About: React.FC = () => {
             </span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl md:max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate Frontend Engineer and AI specialist. Currently a{' '}
-            <span className="text-primary font-semibold">Founding Engineer at Dualite</span>, developing 
-            Alpha - an AI Frontend Engineer.
+            I'm a passionate Software Developer and AI specialist. Currently a{' '}
+            <span className="text-primary font-semibold">Founding Engineer at <a href="https://dualite.dev/" target="_blank" rel="noopener noreferrer" className="hover:underline">Dualite</a></span>, developing{' '}
+            <a href="https://dualite.dev/" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">Dualite</a> - Idea to App in minutes.
           </p>
         </motion.div>
 
