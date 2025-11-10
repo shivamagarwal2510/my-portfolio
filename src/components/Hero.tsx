@@ -150,13 +150,6 @@ const Hero: React.FC = () => {
               >
                 Agarwal
               </motion.span>
-              <motion.div
-                className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 text-xl sm:text-2xl"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                ⚡
-              </motion.div>
             </h1>
 
             <motion.div
