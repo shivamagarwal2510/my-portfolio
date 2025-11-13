@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, Phone, MapPin, Github, Linkedin, Code, Sparkles } from "lucide-react";
+import { ArrowDown, Mail, Phone, MapPin, Github, Linkedin, Code, Sparkles, Download } from "lucide-react";
 
 const Hero: React.FC = () => {
   const containerVariants = {
@@ -57,6 +57,9 @@ const Hero: React.FC = () => {
       }
     }
   };
+
+  // Google Drive link converted for direct download
+  const resumeDownloadUrl = "https://drive.google.com/uc?export=download&id=1H1OYOtwBR3JSjICePt7XYy-hmIMmvKuW";
 
   return (
     <section
@@ -197,29 +200,44 @@ const Hero: React.FC = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex justify-center space-x-3 sm:space-x-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
-            {[
-              { icon: Github, href: "https://github.com/shivamagarwal2510", label: "GitHub" },
-              {
-                icon: Linkedin,
-                href: "https://www.linkedin.com/in/shivam-agarwal-b88a04201/",
-                label: "LinkedIn"
-              },
-              { icon: Code, href: "https://leetcode.com/u/Shivamagarwal2510/", label: "LeetCode" }
-            ].map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                aria-label={social.label}
-                whileHover={{ scale: 1.1, y: -3, transition: { type: "spring", stiffness: 300 } }}
-                whileTap={{ scale: 0.95 }}
-                className="group p-2.5 sm:p-3 bg-surface/50 backdrop-blur-md text-foreground rounded-lg sm:rounded-xl hover:bg-surface transition-all duration-300 border border-border hover:shadow-lg hover:shadow-primary/20"
-              >
-                <social.icon size={16} sm:size={18} />
-              </motion.a>
-            ))}
+            <div className="flex justify-center space-x-3 sm:space-x-4">
+              {[
+                { icon: Github, href: "https://github.com/shivamagarwal2510", label: "GitHub" },
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/in/shivam-agarwal-b88a04201/",
+                  label: "LinkedIn"
+                },
+                { icon: Code, href: "https://leetcode.com/u/Shivamagarwal2510/", label: "LeetCode" }
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.1, y: -3, transition: { type: "spring", stiffness: 300 } }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group p-2.5 sm:p-3 bg-surface/50 backdrop-blur-md text-foreground rounded-lg sm:rounded-xl hover:bg-surface transition-all duration-300 border border-border hover:shadow-lg hover:shadow-primary/20"
+                >
+                  <social.icon size={16} sm:size={18} />
+                </motion.a>
+              ))}
+            </div>
+            
+            <motion.a
+              href={resumeDownloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Shivam-Agarwal-Resume.pdf"
+              whileHover={{ scale: 1.05, y: -2, transition: { type: "spring", stiffness: 300 } }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-primary text-primary-foreground px-6 py-3 sm:px-8 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-200"
+            >
+              <Download size={18} sm:size={20} />
+              <span>Download Resume</span>
+            </motion.a>
           </motion.div>
 
           <motion.div
